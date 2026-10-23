@@ -1,0 +1,53 @@
+.chilis-accordion {
+  width: 640px;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 0 var(--sp-24);
+  font-family: var(--font-body);
+}
+.chilis-accordion--navy {
+  background: var(--color-bg-night);
+  color: var(--color-text-on-night);
+  --acc-divider: var(--gray-white);
+}
+.chilis-accordion--ranch {
+  background: var(--color-bg-surface-warm);
+  color: var(--color-text-primary);
+  --acc-divider: var(--color-border-divider);
+}
+.chilis-accordion__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-16);
+  width: 100%;
+  padding: var(--sp-20) 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: 700;
+  font-size: var(--type-paragraph-medium-size);
+  line-height: 1.4;
+  text-align: left;
+  cursor: pointer;
+}
+.chilis-accordion__header:focus-visible {
+  outline: var(--bw-small) solid currentColor;
+  outline-offset: 2px;
+}
+.chilis-accordion__content {
+  margin: 0;
+  padding-bottom: var(--sp-20);
+  font-weight: 500;
+  font-size: var(--type-paragraph-small-size);
+  line-height: 1.4;
+}
+.chilis-accordion__divider {
+  height: var(--bw-small);
+  background: var(--acc-divider);
+}
+.chilis-accordion-stack {
+  display: flex;
+  flex-direction: column;
+}

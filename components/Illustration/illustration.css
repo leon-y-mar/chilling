@@ -1,0 +1,13 @@
+/* Illustration · Figma: Illustration/* (Style Guide 2025, Other) · 56×56 */
+.chilis-illustration {
+  display: inline-block;
+  flex: none;
+  width: 56px;
+  height: 56px;
+  line-height: 0;
+  vertical-align: middle;
+}
+
+.chilis-illustration svg {
+  display: block;
+}

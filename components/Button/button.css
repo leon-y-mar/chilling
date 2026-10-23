@@ -1,0 +1,171 @@
+.chilis-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-8);
+  box-sizing: border-box;
+  min-height: var(--size-button-min-height-lg);
+  padding: var(--sp-16) var(--sp-24);
+  border: var(--bw-small) solid var(--btn-stroke);
+  border-radius: var(--br-100);
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: var(--type-button-size);
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard),
+    filter var(--duration-fast) var(--ease-standard);
+}
+.chilis-btn--small {
+  min-height: var(--size-button-min-height-sm);
+  padding: var(--sp-12) var(--sp-16);
+}
+.chilis-btn--full {
+  width: 100%;
+}
+.chilis-btn:focus-visible {
+  outline: var(--bw-small) solid var(--color-border-strong);
+  outline-offset: 4px;
+}
+
+/* ---- Tokens por color ---- */
+.chilis-btn--red {
+  --btn-bg: var(--button-red-bg);
+  --btn-text: var(--button-red-text);
+  --btn-stroke: var(--button-red-stroke);
+  --btn-shadow: var(--button-red-shadow);
+  --btn-bg-hover: var(--button-red-bg-hover);
+  --btn-text-hover: var(--button-red-text-hover);
+}
+.chilis-btn--blue {
+  --btn-bg: var(--button-blue-bg);
+  --btn-text: var(--button-blue-text);
+  --btn-stroke: var(--button-blue-stroke);
+  --btn-shadow: var(--button-blue-shadow);
+  --btn-bg-hover: var(--button-blue-bg-hover);
+  --btn-text-hover: var(--button-blue-text-hover);
+}
+.chilis-btn--ranch {
+  --btn-bg: var(--button-ranch-bg);
+  --btn-text: var(--button-ranch-text);
+  --btn-stroke: var(--button-ranch-stroke);
+  --btn-shadow: var(--button-ranch-shadow);
+  --btn-bg-hover: var(--button-ranch-bg-hover);
+  --btn-text-hover: var(--button-ranch-text-hover);
+}
+.chilis-btn--yellow {
+  --btn-bg: var(--button-yellow-bg);
+  --btn-text: var(--button-yellow-text);
+  --btn-stroke: var(--button-yellow-stroke);
+  --btn-shadow: var(--button-yellow-shadow);
+  --btn-bg-hover: var(--button-yellow-bg-hover);
+  --btn-text-hover: var(--button-yellow-text-hover);
+}
+
+/* ---- Offset: sombra dura desplazada 4px ---- */
+.chilis-btn--offset {
+  filter: drop-shadow(-4px 4px 0 var(--btn-shadow));
+}
+.chilis-btn--offset:hover:not(:disabled),
+.chilis-btn--offset:active:not(:disabled),
+.chilis-btn--offset.is-hover:not(:disabled) {
+  filter: none;
+  background: var(--btn-bg-hover);
+  color: var(--btn-text-hover);
+}
+
+/* ---- Flat ---- */
+.chilis-btn--flat:hover:not(:disabled),
+.chilis-btn--flat:active:not(:disabled),
+.chilis-btn--flat.is-hover:not(:disabled) {
+  background: var(--btn-bg-hover);
+  border-color: var(--btn-bg-hover);
+  color: var(--btn-text-hover);
+}
+
+/* ---- Outlined (solo Red y Blue) ---- */
+.chilis-btn--outlined {
+  background: transparent;
+}
+.chilis-btn--outlined.chilis-btn--red {
+  --btn-text: var(--button-outlined-red-text);
+  --btn-stroke: var(--button-outlined-red-stroke);
+  --btn-bg-hover: var(--button-outlined-red-bg-hover);
+  --btn-text-hover: var(--button-outlined-red-text-hover);
+}
+.chilis-btn--outlined.chilis-btn--blue {
+  --btn-text: var(--button-outlined-blue-text);
+  --btn-stroke: var(--button-outlined-blue-stroke);
+  --btn-bg-hover: var(--button-outlined-blue-bg-hover);
+  --btn-text-hover: var(--button-outlined-blue-text-hover);
+}
+.chilis-btn--outlined:hover:not(:disabled),
+.chilis-btn--outlined:active:not(:disabled),
+.chilis-btn--outlined.is-hover:not(:disabled) {
+  background: var(--btn-bg-hover);
+  border-color: var(--btn-bg-hover);
+  color: var(--btn-text-hover);
+}
+
+/* ---- Link (solo Red y Blue): subrayado de 4px ---- */
+.chilis-btn--link {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  filter: none;
+}
+.chilis-btn--link::after {
+  content: '';
+  align-self: stretch;
+  height: 4px;
+  background: var(--btn-line);
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+.chilis-btn--link.chilis-btn--red {
+  --btn-text: var(--button-link-red-text);
+  --btn-line: var(--button-link-red-line);
+  --btn-line-hover: var(--button-link-red-line-hover);
+}
+.chilis-btn--link.chilis-btn--blue {
+  --btn-text: var(--button-link-blue-text);
+  --btn-line: var(--button-link-blue-line);
+  --btn-line-hover: var(--button-link-blue-line-hover);
+}
+.chilis-btn--link:hover:not(:disabled)::after,
+.chilis-btn--link:active:not(:disabled)::after,
+.chilis-btn--link.is-hover:not(:disabled)::after {
+  background: var(--btn-line-hover);
+}
+.chilis-btn--link .chilis-btn__content {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-8);
+}
+
+/* ---- Disabled (todos los estilos) ---- */
+.chilis-btn:disabled {
+  cursor: not-allowed;
+  filter: none;
+  background: var(--button-disabled-bg);
+  border-color: var(--button-disabled-stroke);
+  color: var(--button-disabled-text);
+}
+.chilis-btn--link:disabled {
+  background: transparent;
+}
+.chilis-btn--link:disabled::after {
+  background: var(--button-disabled-stroke);
+}

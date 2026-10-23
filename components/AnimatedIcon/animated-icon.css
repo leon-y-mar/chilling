@@ -1,0 +1,107 @@
+/* AnimatedIcon · Figma: Animation/* (Style Guide 2025, Other) */
+.chilis-animated-icon {
+  display: inline-block;
+  flex: none;
+  width: var(--size-icon);
+  height: var(--size-icon);
+  line-height: 0;
+  vertical-align: middle;
+}
+
+.chilis-animated-icon svg {
+  display: block;
+  overflow: visible;
+}
+
+/* Cuadros: cambio instantáneo (como el prototipo de Figma). El 1 se ve sin animación. */
+.chilis-animated-icon__frame {
+  opacity: 0;
+  animation-duration: var(--chilis-anim-duration, 2s);
+  animation-timing-function: step-end;
+  animation-iteration-count: infinite;
+}
+.chilis-animated-icon__frame:first-child {
+  opacity: 1;
+}
+.chilis-animated-icon--loop.chilis-animated-icon--frames-3 .chilis-animated-icon__frame {
+  animation-name: chilis-anim-frames-3;
+}
+.chilis-animated-icon--loop.chilis-animated-icon--frames-4 .chilis-animated-icon__frame {
+  animation-name: chilis-anim-frames-4;
+}
+.chilis-animated-icon--loop.chilis-animated-icon--frames-6 .chilis-animated-icon__frame {
+  animation-name: chilis-anim-frames-6;
+}
+
+@keyframes chilis-anim-frames-3 {
+  0% { opacity: 1; }
+  33.333% { opacity: 0; }
+  100% { opacity: 0; }
+}
+@keyframes chilis-anim-frames-4 {
+  0% { opacity: 1; }
+  25% { opacity: 0; }
+  100% { opacity: 0; }
+}
+@keyframes chilis-anim-frames-6 {
+  0% { opacity: 1; }
+  16.667% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* hourglass: giro a pasos de 90° al final de cada cuadro, sincronizado con el cambio de color */
+.chilis-animated-icon__spin {
+  transform-box: view-box;
+  transform-origin: 16px 16px;
+  animation: chilis-anim-spin-steps var(--chilis-anim-duration, 2s) ease-in-out infinite;
+}
+
+@keyframes chilis-anim-spin-steps {
+  0%, 20% { transform: rotate(0deg); }
+  25%, 45% { transform: rotate(90deg); }
+  50%, 70% { transform: rotate(180deg); }
+  75%, 95% { transform: rotate(270deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/*
+ * trash y megaphone: quietos hasta que se interactúa con el botón o enlace que los contiene (o con el ícono).
+ * Una pasada: los cuadros se muestran uno tras otro (cada uno tapa al anterior: misma geometría)
+ * mientras el ícono crece al 115 % y regresa. Al terminar vuelve al cuadro 1.
+ */
+.chilis-animated-icon--interactive .chilis-animated-icon__frame {
+  animation-iteration-count: 1;
+}
+.chilis-animated-icon__pulse {
+  transform-box: view-box;
+  transform-origin: 16px 16px;
+}
+:where(button, a, summary, label, [role='button'], [tabindex]):is(:hover, :focus-visible, :active) .chilis-animated-icon--interactive .chilis-animated-icon__frame,
+.chilis-animated-icon--interactive:hover .chilis-animated-icon__frame {
+  animation-name: chilis-anim-show;
+}
+:where(button, a, summary, label, [role='button'], [tabindex]):is(:hover, :focus-visible, :active) .chilis-animated-icon--interactive .chilis-animated-icon__pulse,
+.chilis-animated-icon--interactive:hover .chilis-animated-icon__pulse {
+  animation: chilis-anim-pulse var(--chilis-anim-duration, 2s) ease-in-out 1;
+}
+:where(button, a, [role='button']):disabled .chilis-animated-icon--interactive *,
+:where([aria-disabled='true']) .chilis-animated-icon--interactive * {
+  animation: none !important;
+}
+
+@keyframes chilis-anim-show {
+  0%, 100% { opacity: 1; }
+}
+@keyframes chilis-anim-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chilis-animated-icon__frame,
+  .chilis-animated-icon__spin,
+  .chilis-animated-icon__pulse {
+    animation: none !important;
+  }
+}

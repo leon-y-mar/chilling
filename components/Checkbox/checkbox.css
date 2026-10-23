@@ -1,0 +1,39 @@
+.chilis-choice {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-12);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: var(--type-paragraph-medium-size);
+  line-height: 1.4;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  position: relative;
+}
+.chilis-choice--disabled {
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+}
+.chilis-choice__input {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  opacity: 0;
+  cursor: inherit;
+}
+.chilis-choice__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--br-8);
+}
+.chilis-choice__icon--toggle {
+  width: 40px;
+}
+.chilis-choice__input:focus-visible + .chilis-choice__icon {
+  outline: var(--bw-small) solid var(--color-border-strong);
+  outline-offset: 2px;
+}

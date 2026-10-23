@@ -1,0 +1,11 @@
+/* FaqBadge · Figma: FAQ/* (Style Guide 2025, Other) */
+.chilis-faq-badge {
+  display: inline-block;
+  flex: none;
+  line-height: 0;
+  vertical-align: middle;
+}
+
+.chilis-faq-badge svg {
+  display: block;
+}

@@ -1,0 +1,97 @@
+.chilis-modal {
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+  gap: var(--sp-24);
+  padding: var(--sp-24);
+  border-radius: var(--br-8);
+  background: var(--color-bg-canvas);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+}
+.chilis-modal--image-left,
+.chilis-modal--image-right {
+  width: 640px;
+  max-width: 100%;
+}
+.chilis-modal--image-right {
+  flex-direction: row-reverse;
+}
+.chilis-modal--image-top,
+.chilis-modal--none {
+  width: 380px;
+  max-width: 100%;
+  flex-direction: column;
+}
+.chilis-modal__image {
+  flex: none;
+  box-sizing: border-box;
+  overflow: hidden;
+  border: var(--bw-small) solid var(--color-border-strong);
+  border-radius: var(--br-8);
+  background: var(--color-bg-surface-warm);
+}
+.chilis-modal--image-left .chilis-modal__image,
+.chilis-modal--image-right .chilis-modal__image {
+  width: 240px;
+  height: 240px;
+}
+.chilis-modal--image-top .chilis-modal__image {
+  width: 100%;
+  height: 180px;
+}
+.chilis-modal__image > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.chilis-modal__content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--sp-16);
+  min-width: 0;
+}
+.chilis-modal__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: var(--type-h3-size);
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.chilis-modal__body {
+  margin: 0;
+  font-weight: 500;
+  font-size: var(--type-paragraph-small-size);
+  line-height: 1.4;
+}
+.chilis-modal__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-12);
+}
+.chilis-modal__close {
+  position: absolute;
+  top: var(--sp-12);
+  right: var(--sp-12);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  line-height: 0;
+  cursor: pointer;
+  border-radius: var(--br-8);
+}
+.chilis-modal__close:focus-visible {
+  outline: var(--bw-small) solid var(--color-border-strong);
+  outline-offset: 2px;
+}
+.chilis-modal-scrim {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-24);
+  background: var(--color-bg-scrim);
+}

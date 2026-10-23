@@ -1,0 +1,27 @@
+.pt { font-family: var(--font-body); background: var(--color-bg-canvas); color: var(--color-text-primary); box-sizing: border-box; }
+.pt .chilis-order-item, .pt .chilis-cart-item, .pt .chilis-cart-summary { width: 100%; }
+.pt-title-h2 { margin: 0; font-family: var(--font-display); font-weight: 900; font-size: var(--type-h2-size); line-height: .92; letter-spacing: .02em; text-transform: uppercase; }
+.pt-title-h4 { margin: 0; font-family: var(--font-display); font-weight: 900; font-size: var(--type-h4-size); line-height: .9; letter-spacing: .02em; text-transform: uppercase; }
+.pt-label { margin: 0; font-weight: 700; font-size: var(--type-paragraph-medium-size); line-height: 1.2; text-transform: uppercase; }
+.pt-row { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* Ecommerce / Menú — 1440 */
+.pt-menu { width: 1440px; }
+.pt-menu__body { display: flex; gap: 40px; padding: 40px; align-items: flex-start; }
+.pt-menu__main { flex: 1; display: flex; flex-direction: column; gap: 24px; min-width: 0; }
+.pt-menu__grid { display: grid; grid-template-columns: repeat(2, 320px); gap: 24px; }
+.pt-menu__cart { width: 480px; flex: none; display: flex; flex-direction: column; gap: 16px; }
+
+/* Reservas — tablet vertical 820×1180 */
+.pt-resv { width: 820px; min-height: 1180px; padding: 40px; display: flex; flex-direction: column; align-items: flex-start; gap: 32px; box-sizing: border-box; }
+.pt-resv .chilis-resv { width: 100%; }
+.pt-resv__row { display: flex; gap: 12px; }
+
+/* Toma de pedido — tablet horizontal 1180×820 */
+.pt-order { width: 1180px; height: 820px; display: flex; flex-direction: column; }
+.pt-order__body { flex: 1; display: flex; min-height: 0; }
+.pt-order__tables { flex: 1; display: flex; flex-direction: column; gap: 16px; padding: 24px; min-width: 0; }
+.pt-order__h3 { margin: 0; font-weight: 800; font-size: var(--type-h3-size); line-height: 1.25; }
+.pt-order__grid { display: flex; flex-wrap: wrap; gap: 16px; }
+.pt-order__panel { width: 440px; flex: none; background: var(--color-bg-surface); display: flex; flex-direction: column; overflow: auto; }
+.pt-order__panel h3 { margin: 0; padding: 16px; font-weight: 800; font-size: var(--type-h5-size); line-height: 1.4; }

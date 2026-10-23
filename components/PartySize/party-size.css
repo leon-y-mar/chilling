@@ -1,0 +1,36 @@
+.chilis-party {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-24);
+  box-sizing: border-box;
+  padding: var(--sp-16) var(--sp-24);
+  border: var(--bw-small) solid var(--color-border-strong);
+  border-radius: var(--br-100);
+  background: var(--color-bg-canvas);
+  color: var(--color-text-primary);
+}
+.chilis-party__btn {
+  padding: 0;
+  border: 0;
+  border-radius: var(--br-100);
+  background: transparent;
+  line-height: 0;
+  cursor: pointer;
+}
+.chilis-party__btn:focus-visible {
+  outline: var(--bw-small) solid var(--color-border-strong);
+  outline-offset: 2px;
+}
+.chilis-party__btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.chilis-party__value {
+  min-width: 1ch;
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: var(--type-h3-size);
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+}

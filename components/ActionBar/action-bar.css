@@ -1,0 +1,23 @@
+.chilis-action-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-16);
+  box-sizing: border-box;
+  width: 100%;
+  padding: var(--sp-16) var(--sp-24);
+  border-top: var(--bw-small) solid var(--color-border-strong);
+  background: var(--color-bg-canvas);
+  font-family: var(--font-body);
+}
+.chilis-action-bar__total {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.chilis-action-bar__total-label {
+  font-weight: 700;
+  font-size: var(--type-paragraph-xsmall-size);
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}

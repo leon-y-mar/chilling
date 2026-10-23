@@ -1,0 +1,26 @@
+.chilis-chip {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: var(--size-touch-min);
+  padding: var(--sp-8) var(--sp-20);
+  border: var(--bw-small) solid var(--color-border-strong);
+  border-radius: var(--br-100);
+  background: var(--color-bg-canvas);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.4;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.chilis-chip[aria-pressed='true'] {
+  /* bg/inverse = night en Light (igual que Figma) y blanco en Dark (distinguible del lienzo) */
+  background: var(--color-bg-inverse);
+  color: var(--color-text-inverse);
+}
+.chilis-chip:focus-visible {
+  outline: var(--bw-small) solid var(--color-border-strong);
+  outline-offset: 2px;
+}

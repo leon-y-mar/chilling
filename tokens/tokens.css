@@ -1,0 +1,415 @@
+/* ==========================================================================
+   Chili's Design System — tokens
+   Fuente: Figma "Prueba - Chilis DS" (variables). Arquitectura:
+   Primitivas → Color (semántico, Light/Dark por alias) → button/*.
+   Modo oscuro = extensión propuesta (pendiente de revisión de marca).
+   ========================================================================== */
+
+:root {
+  /* ---- Primitivas: marca ---- */
+  --brand-chilis-red: #ed1c24; /* solo logo / marca, no UI */
+  --brand-chilis-red-aa: #e81b23;
+  --brand-cilantro: #749e33;
+  --brand-ranch: #eeece7;
+  --brand-thursday-night: #22235b;
+  --brand-sunrise: #ffc60b;
+
+  /* ---- Primitivas: grises ---- */
+  --gray-white: #ffffff;
+  --gray-1: #f8f7f5;
+  --gray-2: #f3f2ee;
+  --gray-3: #d4d2cd;
+  --gray-4: #a19f9a;
+  --gray-5: #3c3a35;
+  --gray-black: #090702;
+
+  /* ---- Primitivas: alertas ---- */
+  --alert-success: #5e8029;
+  --alert-warning: #ffa724;
+  --alert-error: #ba161d;
+
+  /* ---- Primitivas: ilustraciones (Style Guide 2025, pág. 6). Solo ilustraciones a color ---- */
+  --illustration-skin: #f9ad73;
+  --illustration-skin-highlight: #fed2a4;
+  --illustration-wood: #ad6b3b;
+  --illustration-chocolate-outline: #2a0909;
+  --illustration-chocolate: #551818;
+  --illustration-chocolate-drizzle: #68332f;
+  --illustration-chocolate-glaze: #875d5a;
+
+  /* ---- Primitivas: extensiones (ext/) ---- */
+  --ext-gray-6: #6f6d68;
+  --ext-night-raised: #2e2f72;
+  --ext-night-deep: #17184a;
+  --ext-error-tint: #f7e7e8;
+  --ext-error-light: #ff8a8e;
+  --ext-scrim: #09070299;
+
+  /* ---- Spacing ---- */
+  --sp-0: 0;
+  --sp-4: 4px;
+  --sp-8: 8px;
+  --sp-12: 12px;
+  --sp-16: 16px;
+  --sp-20: 20px;
+  --sp-24: 24px;
+  --sp-32: 32px;
+  --sp-40: 40px;
+  --sp-56: 56px;
+  --sp-80: 80px;
+  --sp-96: 96px;
+  --sp-120: 120px;
+
+  /* ---- Radius ---- */
+  --br-0: 0;
+  --br-4: 4px;
+  --br-8: 8px;
+  --br-16: 16px;
+  --br-24: 24px;
+  --br-32: 32px;
+  --br-48: 48px;
+  --br-100: 100px;
+
+  /* ---- Border width ---- */
+  --bw-xsmall: 1px;
+  --bw-small: 2px;
+  --bw-medium: 3px;
+  --bw-large: 5px;
+  --bw-xlarge: 8px;
+
+  /* ---- Motion ---- */
+  --duration-fast: 0.15s;
+  --duration-base: 0.25s;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+
+  /* ---- Tipografía: familias ---- */
+  --font-display: 'Dirk', 'Montserrat', sans-serif;
+  --font-body: 'Montserrat', system-ui, sans-serif;
+
+  /* ---- Tipografía: tamaños (Desktop) ---- */
+  --type-h1-size: 64px;
+  --type-h2-size: 48px;
+  --type-h3-size: 28px;
+  --type-h4-size: 28px;
+  --type-h5-size: 20px;
+  --type-h6-size: 22px;
+  --type-pricing-large-size: 20px;
+  --type-pricing-medium-size: 18px;
+  --type-pricing-small-size: 16px;
+  --type-label-large-size: 16px;
+  --type-label-small-size: 12px;
+  --type-paragraph-xlarge-size: 28px;
+  --type-paragraph-large-size: 18px;
+  --type-paragraph-medium-size: 16px;
+  --type-paragraph-small-size: 14px;
+  --type-paragraph-xsmall-size: 12px;
+  --type-button-size: 14px;
+  --type-display-tracking: 0.02em;
+
+  /* ---- Sizing (modo Web) ---- */
+  --size-touch-min: 44px;
+  --size-icon-xs: 16px;
+  --size-icon-sm: 24px;
+  --size-icon: 32px;
+  --size-icon-lg: 48px;
+  --size-button-min-height-lg: 48px;
+  --size-button-min-height-sm: 40px;
+  --size-input-height: 48px;
+  --size-row-height: 56px;
+  --size-dropdown-option-height: 48px;
+  --size-modal-width-sm: 480px;
+  --size-modal-width-lg: 720px;
+
+  /* ---- Layout (modo Desktop) ---- */
+  --layout-viewport: 1440px;
+  --layout-columns: 12;
+  --layout-gutter: 24px;
+  --layout-margin: 80px;
+  --layout-max-content: 1280px;
+}
+
+/* Sizing modo Tablet: aplicar data-sizing="tablet" en un contenedor */
+[data-sizing='tablet'] {
+  --size-touch-min: 48px;
+  --size-button-min-height-lg: 56px;
+  --size-button-min-height-sm: 48px;
+  --size-input-height: 56px;
+  --size-row-height: 64px;
+  --size-dropdown-option-height: 56px;
+  --size-modal-width-sm: 560px;
+}
+
+/* Layout y tipografía por breakpoint */
+@media (max-width: 1023px) {
+  :root {
+    --layout-viewport: 820px;
+    --layout-columns: 8;
+    --layout-margin: 40px;
+    --layout-max-content: 740px;
+  }
+}
+@media (max-width: 599px) {
+  :root {
+    --layout-viewport: 390px;
+    --layout-columns: 4;
+    --layout-gutter: 16px;
+    --layout-margin: 16px;
+    --layout-max-content: 358px;
+    --type-h1-size: 50px;
+    --type-h2-size: 44px;
+  }
+}
+
+/* ==========================================================================
+   Color semántico — Light (por defecto)
+   ========================================================================== */
+:root,
+[data-theme='light'] {
+  color-scheme: light;
+
+  --color-bg-canvas: var(--gray-white);
+  --color-bg-surface: var(--gray-1);
+  --color-bg-surface-warm: var(--brand-ranch);
+  --color-bg-hover: var(--gray-2);
+  --color-bg-disabled: var(--gray-3);
+  --color-bg-inverse: var(--brand-thursday-night);
+  --color-bg-brand: var(--brand-chilis-red-aa);
+  --color-bg-accent: var(--brand-sunrise);
+  --color-bg-night: var(--brand-thursday-night);
+  --color-bg-error-subtle: var(--ext-error-tint);
+  --color-bg-scrim: var(--ext-scrim);
+
+  --color-text-primary: var(--brand-thursday-night);
+  --color-text-secondary: var(--gray-5);
+  --color-text-placeholder: var(--ext-gray-6);
+  --color-text-disabled: var(--gray-4);
+  --color-text-inverse: var(--gray-white);
+  --color-text-on-brand: var(--gray-white);
+  --color-text-on-accent: var(--brand-thursday-night);
+  --color-text-on-night: var(--gray-white);
+  --color-text-brand: var(--alert-error);
+  --color-text-error: var(--alert-error);
+  --color-text-success: var(--alert-success);
+  --color-text-link: var(--brand-thursday-night);
+
+  --color-border-default: var(--ext-gray-6);
+  --color-border-strong: var(--brand-thursday-night);
+  --color-border-divider: var(--gray-3);
+  --color-border-brand: var(--brand-chilis-red-aa);
+  --color-border-error: var(--alert-error);
+  --color-border-success: var(--alert-success);
+  --color-border-warning: var(--alert-warning);
+  --color-border-disabled: var(--gray-3);
+
+  --color-icon-primary: var(--brand-thursday-night);
+  --color-icon-success: var(--alert-success);
+  --color-icon-error: var(--alert-error);
+  --color-icon-warning: var(--alert-warning);
+  --color-icon-disabled: var(--gray-4);
+  --color-icon-accent: var(--brand-cilantro);
+  /* Relleno interior de los íconos (Style Guide 2025) y sus excepciones en Dark */
+  --color-icon-surface: var(--brand-ranch);
+  --color-icon-surface-brand: var(--brand-ranch);
+  --color-icon-surface-accent: var(--brand-ranch);
+  --color-icon-surface-white: var(--brand-ranch);
+
+  /* Marco de tarjeta de PaymentLogo: fijo, mismo valor en Light y Dark */
+  --color-payment-bg: var(--gray-white);
+  --color-payment-border: var(--gray-3);
+
+  /* Ilustraciones a color: fijos, mismo valor en Light y Dark */
+  --color-illustration-skin: var(--illustration-skin);
+  --color-illustration-skin-highlight: var(--illustration-skin-highlight);
+  --color-illustration-wood: var(--illustration-wood);
+  --color-illustration-chocolate-outline: var(--illustration-chocolate-outline);
+  --color-illustration-chocolate: var(--illustration-chocolate);
+  --color-illustration-chocolate-drizzle: var(--illustration-chocolate-drizzle);
+  --color-illustration-chocolate-glaze: var(--illustration-chocolate-glaze);
+  --color-illustration-outline: var(--brand-thursday-night);
+  --color-illustration-red: var(--brand-chilis-red-aa);
+  --color-illustration-yellow: var(--brand-sunrise);
+  --color-illustration-green: var(--brand-cilantro);
+  --color-illustration-white: var(--gray-white);
+  --color-illustration-ranch: var(--brand-ranch);
+  --color-illustration-cream: var(--gray-1);
+
+  /* ---- Botones ---- */
+  --button-red-bg: var(--brand-chilis-red-aa);
+  --button-red-text: var(--gray-white);
+  --button-red-stroke: var(--brand-thursday-night);
+  --button-red-shadow: var(--brand-thursday-night);
+  --button-red-bg-hover: var(--brand-thursday-night);
+  --button-red-text-hover: var(--gray-white);
+
+  --button-blue-bg: var(--brand-thursday-night);
+  --button-blue-text: var(--gray-white);
+  --button-blue-stroke: var(--brand-cilantro);
+  --button-blue-shadow: var(--brand-cilantro);
+  --button-blue-bg-hover: var(--brand-cilantro);
+  --button-blue-text-hover: var(--brand-thursday-night);
+
+  --button-ranch-bg: var(--brand-ranch);
+  --button-ranch-text: var(--brand-thursday-night);
+  --button-ranch-stroke: var(--brand-thursday-night);
+  --button-ranch-shadow: var(--brand-thursday-night);
+  --button-ranch-bg-hover: var(--brand-thursday-night);
+  --button-ranch-text-hover: var(--brand-ranch);
+
+  --button-yellow-bg: var(--brand-sunrise);
+  --button-yellow-text: var(--brand-thursday-night);
+  --button-yellow-stroke: var(--brand-thursday-night);
+  --button-yellow-shadow: var(--brand-thursday-night);
+  --button-yellow-bg-hover: var(--brand-thursday-night);
+  --button-yellow-text-hover: var(--brand-sunrise);
+
+  --button-outlined-red-text: var(--brand-chilis-red-aa);
+  --button-outlined-red-stroke: var(--brand-chilis-red-aa);
+  --button-outlined-red-bg-hover: var(--brand-chilis-red-aa);
+  --button-outlined-red-text-hover: var(--gray-white);
+
+  --button-outlined-blue-text: var(--brand-thursday-night);
+  --button-outlined-blue-stroke: var(--brand-thursday-night);
+  --button-outlined-blue-bg-hover: var(--brand-thursday-night);
+  --button-outlined-blue-text-hover: var(--gray-white);
+
+  --button-link-red-text: var(--brand-chilis-red-aa);
+  --button-link-red-line: var(--brand-thursday-night);
+  --button-link-red-line-hover: var(--brand-cilantro);
+  --button-link-blue-text: var(--brand-thursday-night);
+  --button-link-blue-line: var(--brand-chilis-red-aa);
+  --button-link-blue-line-hover: var(--brand-cilantro);
+
+  --button-disabled-bg: var(--gray-3);
+  --button-disabled-text: var(--gray-4);
+  --button-disabled-stroke: var(--gray-3);
+}
+
+/* ==========================================================================
+   Color semántico — Dark (extensión propuesta)
+   ========================================================================== */
+[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-bg-canvas: var(--brand-thursday-night);
+  --color-bg-surface: var(--ext-night-raised);
+  --color-bg-surface-warm: var(--ext-night-raised);
+  --color-bg-hover: var(--ext-night-deep);
+  --color-bg-disabled: var(--gray-3);
+  --color-bg-inverse: var(--gray-white);
+  --color-bg-brand: var(--brand-chilis-red-aa);
+  --color-bg-accent: var(--brand-sunrise);
+  --color-bg-night: var(--brand-thursday-night);
+  --color-bg-error-subtle: var(--ext-night-raised);
+  --color-bg-scrim: var(--ext-scrim);
+
+  --color-text-primary: var(--gray-white);
+  --color-text-secondary: var(--brand-ranch);
+  --color-text-placeholder: var(--gray-3);
+  --color-text-disabled: var(--gray-4);
+  --color-text-inverse: var(--brand-thursday-night);
+  --color-text-on-brand: var(--gray-white);
+  --color-text-on-accent: var(--brand-thursday-night);
+  --color-text-on-night: var(--gray-white);
+  --color-text-brand: var(--brand-sunrise);
+  --color-text-error: var(--ext-error-light);
+  --color-text-success: var(--brand-cilantro);
+  --color-text-link: var(--gray-white);
+
+  --color-border-default: var(--gray-4);
+  --color-border-strong: var(--gray-white);
+  --color-border-divider: var(--brand-ranch);
+  --color-border-brand: var(--brand-chilis-red-aa);
+  --color-border-error: var(--ext-error-light);
+  --color-border-success: var(--brand-cilantro);
+  --color-border-warning: var(--alert-warning);
+  --color-border-disabled: var(--gray-3);
+
+  --color-icon-primary: var(--brand-ranch);
+  --color-icon-success: var(--brand-cilantro);
+  --color-icon-error: var(--ext-error-light);
+  --color-icon-warning: var(--alert-warning);
+  --color-icon-disabled: var(--gray-4);
+  --color-icon-accent: var(--brand-cilantro);
+  --color-icon-surface: var(--brand-thursday-night);
+  --color-icon-surface-brand: var(--brand-chilis-red-aa);
+  --color-icon-surface-accent: var(--brand-sunrise);
+  --color-icon-surface-white: var(--gray-white);
+
+  --color-payment-bg: var(--gray-white);
+  --color-payment-border: var(--gray-3);
+
+  /* Ilustraciones a color: fijos, mismo valor en Light y Dark */
+  --color-illustration-skin: var(--illustration-skin);
+  --color-illustration-skin-highlight: var(--illustration-skin-highlight);
+  --color-illustration-wood: var(--illustration-wood);
+  --color-illustration-chocolate-outline: var(--illustration-chocolate-outline);
+  --color-illustration-chocolate: var(--illustration-chocolate);
+  --color-illustration-chocolate-drizzle: var(--illustration-chocolate-drizzle);
+  --color-illustration-chocolate-glaze: var(--illustration-chocolate-glaze);
+  --color-illustration-outline: var(--brand-thursday-night);
+  --color-illustration-red: var(--brand-chilis-red-aa);
+  --color-illustration-yellow: var(--brand-sunrise);
+  --color-illustration-green: var(--brand-cilantro);
+  --color-illustration-white: var(--gray-white);
+  --color-illustration-ranch: var(--brand-ranch);
+  --color-illustration-cream: var(--gray-1);
+
+  --button-red-bg: var(--brand-chilis-red-aa);
+  --button-red-text: var(--gray-white);
+  --button-red-stroke: var(--gray-white);
+  --button-red-shadow: var(--gray-white);
+  --button-red-bg-hover: var(--gray-white);
+  --button-red-text-hover: var(--brand-chilis-red-aa);
+
+  --button-blue-bg: var(--gray-white);
+  --button-blue-text: var(--brand-chilis-red-aa);
+  --button-blue-stroke: var(--brand-chilis-red-aa);
+  --button-blue-shadow: var(--gray-white);
+  --button-blue-bg-hover: var(--brand-chilis-red-aa);
+  --button-blue-text-hover: var(--gray-white);
+
+  --button-ranch-bg: var(--brand-ranch);
+  --button-ranch-text: var(--brand-thursday-night);
+  --button-ranch-stroke: var(--gray-white);
+  --button-ranch-shadow: var(--gray-white);
+  --button-ranch-bg-hover: var(--gray-white);
+  --button-ranch-text-hover: var(--brand-thursday-night);
+
+  --button-yellow-bg: var(--brand-thursday-night);
+  --button-yellow-text: var(--brand-sunrise);
+  --button-yellow-stroke: var(--brand-sunrise);
+  --button-yellow-shadow: var(--brand-sunrise);
+  --button-yellow-bg-hover: var(--brand-sunrise);
+  --button-yellow-text-hover: var(--brand-thursday-night);
+
+  --button-outlined-red-text: var(--gray-white);
+  --button-outlined-red-stroke: var(--gray-white);
+  --button-outlined-red-bg-hover: var(--gray-white);
+  --button-outlined-red-text-hover: var(--brand-chilis-red-aa);
+
+  --button-outlined-blue-text: var(--gray-white);
+  --button-outlined-blue-stroke: var(--gray-white);
+  --button-outlined-blue-bg-hover: var(--gray-white);
+  --button-outlined-blue-text-hover: var(--brand-thursday-night);
+
+  --button-link-red-text: var(--gray-white);
+  --button-link-red-line: var(--brand-chilis-red-aa);
+  --button-link-red-line-hover: var(--brand-cilantro);
+  --button-link-blue-text: var(--gray-white);
+  --button-link-blue-line: var(--brand-chilis-red-aa);
+  --button-link-blue-line-hover: var(--brand-cilantro);
+
+  --button-disabled-bg: var(--gray-3);
+  --button-disabled-text: var(--gray-4);
+  --button-disabled-stroke: var(--gray-3);
+}
+
+/* Base global usada por Storybook */
+html,
+body {
+  font-family: var(--font-body);
+  color: var(--color-text-primary);
+}
+body {
+  background: var(--color-bg-canvas);
+}

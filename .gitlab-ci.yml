@@ -1,0 +1,36 @@
+stages:
+  - test
+  - secret-detection
+  - deploy
+
+variables:
+  SECRET_DETECTION_ENABLED: 'true'
+
+include:
+  - template: Security/Secret-Detection.gitlab-ci.yml
+
+# Validar que Storybook compile correctamente
+storybook_test:
+  stage: test
+  image: node:22
+  script:
+    - npm ci
+    - npm run build-storybook
+  rules:
+    - if: '$CI_COMMIT_BRANCH'
+
+# Publicar Storybook en GitLab Pages
+pages:
+  stage: deploy
+  image: node:22
+  script:
+    - npm ci
+    - npm run build-storybook
+  pages:
+    publish: storybook-static
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+
+# Mantener la detección de secretos
+secret_detection:
+  stage: secret-detection

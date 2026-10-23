@@ -1,0 +1,28 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Introducción" />
+
+# Chili's Design System
+
+Sistema de diseño de **Chili's Perú** para tres productos: el **ecommerce** de clientes, la **tablet de reservas** y la **tablet de toma de pedido** (ambas operadas por mozos). Idioma es-PE, moneda soles (`S/ 39.90`).
+
+La **fuente de verdad** del sistema es el archivo **`DESIGN.md`** de la raíz del repositorio (ver la página **DESIGN.md** de este Storybook): tokens, tipografía, layout, componentes y reglas de uso. Este Storybook lo complementa mostrando cada pieza funcionando, con sus variantes y estados. Cambia entre **Light** y **Dark** con la barra superior.
+
+## Alcance
+
+Incluye fundamentos (color, tipografía, espaciado, radios, bordes, tamaños, layout, movimiento, íconos, logo y auditoría de contraste), **26 componentes** y **3 pantallas de referencia** (Ecommerce / Menú, Reservas, Toma de pedido) en Light y Dark.
+
+## Estructura de este Storybook
+
+| Sección | Contenido |
+|---|---|
+| **Foundations** | Colors (Light/Dark), Typography, Spacing/Radius/Sizing/Layout/Motion, Icons, Logo, Auditoría de contraste |
+| **Components** | Los 26 componentes. La pestaña **Docs** de cada uno muestra su sección de `DESIGN.md`: cuándo usarlo, cuándo no, estados y accesibilidad |
+| **Patterns** | Pantallas completas en Light y Dark |
+| **DESIGN.md** | El archivo fuente de verdad, completo: reglas para personas y agentes, arquitectura de tokens, desviaciones y limitaciones conocidas |
+
+## Cómo se mantiene
+
+1. Contrasta el cambio con Figma (**Prueba - Chilis DS**) y acuérdalo con diseño.
+2. Edita `DESIGN.md` y actualiza `tokens.css` o el componente.
+3. Ejecuta `npm run design:check` para comprobar que el código coincide con `DESIGN.md`.

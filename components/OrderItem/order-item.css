@@ -1,0 +1,37 @@
+.chilis-order-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+  box-sizing: border-box;
+  width: 480px;
+  max-width: 100%;
+  padding: var(--sp-16);
+  border-bottom: var(--bw-xsmall) solid var(--color-border-divider);
+  background: var(--color-bg-canvas);
+  font-family: var(--font-body);
+}
+.chilis-order-item__main {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-16);
+}
+.chilis-order-item__name {
+  flex: 1;
+  margin: 0;
+  font-weight: 700;
+  font-size: var(--type-paragraph-large-size);
+  line-height: 1.4;
+  color: var(--color-text-primary);
+}
+.chilis-order-item__mods {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-weight: 500;
+  font-size: var(--type-paragraph-small-size);
+  line-height: 1.4;
+  color: var(--color-text-secondary);
+}

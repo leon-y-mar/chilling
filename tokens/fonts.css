@@ -1,0 +1,16 @@
+/* Montserrat (cuerpo, etiquetas, botones) */
+@import '@fontsource/montserrat/500.css';
+@import '@fontsource/montserrat/600.css';
+@import '@fontsource/montserrat/700.css';
+@import '@fontsource/montserrat/800.css';
+
+/* Dirk Black (titulares, precios, números de mesa).
+   ATENCIÓN: el archivo es una versión TRIAL. Verifica la licencia antes de publicar el repo.
+   La versión trial no incluye ñ, á, ¿ (ver README). Copia el archivo a src/assets/fonts/. */
+@font-face {
+  font-family: 'Dirk';
+  src: url('../assets/fonts/DirkTrial-Black.otf') format('opentype');
+  font-weight: 800 900;
+  font-style: normal;
+  font-display: swap;
+}

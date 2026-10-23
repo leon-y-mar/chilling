@@ -1,0 +1,41 @@
+/* Utilidades base compartidas */
+.chilis-icon {
+  display: inline-flex;
+  flex: none;
+  line-height: 0;
+}
+.chilis-icon svg {
+  display: block;
+}
+.chilis-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.chilis-focusable:focus-visible {
+  outline: var(--bw-small) solid var(--color-border-strong);
+  outline-offset: 2px;
+}
+.chilis-display {
+  font-family: var(--font-display);
+  font-weight: 900;
+  letter-spacing: var(--type-display-tracking);
+}
+
+/* Respeta la preferencia del sistema: sin transiciones ni animaciones. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
