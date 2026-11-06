@@ -1,0 +1,265 @@
+/* ==========================================================================
+   Confirmación de pedido — piezas compartidas por las 5 propuestas.
+   Solo tokens semánticos del DS (tokens/tokens.css). Sin sombras suaves.
+   ========================================================================== */
+
+/* Dirk: el repo referencia un archivo trial que no está versionado.
+   Si Dirk está instalada localmente (equipo de diseño), se usa; si no, cae a Montserrat. */
+@font-face {
+  font-family: 'Dirk';
+  src: local('Dirk Black'), local('Dirk-Black'), local('DirkTrial-Black'), local('Dirk');
+  font-weight: 800 900;
+  font-display: swap;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--color-bg-canvas);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--type-paragraph-medium-size);
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4, p, ul, ol, dl, dd { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+
+.cp-container {
+  width: 100%;
+  max-width: calc(var(--layout-max-content) + 2 * var(--layout-margin));
+  margin-inline: auto;
+  padding-left: max(var(--layout-margin), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--layout-margin), env(safe-area-inset-right, 0px));
+}
+
+/* ---- Tipografía (DESIGN.md · Typography) ---- */
+.cp-display,
+.cp-h1, .cp-h2, .cp-h4, .cp-h6 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  letter-spacing: var(--type-display-tracking);
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+.cp-h1 { font-size: var(--type-h1-size); line-height: 0.9; }
+.cp-h2 { font-size: var(--type-h2-size); line-height: 0.92; }
+.cp-h4 { font-size: var(--type-h4-size); line-height: 0.95; }
+.cp-h6 { font-size: var(--type-h6-size); line-height: 1.2; }
+.cp-h5 { font-weight: 800; font-size: var(--type-h5-size); line-height: 1.4; }
+.cp-lead { font-weight: 500; font-size: var(--type-paragraph-large-size); line-height: 1.4; color: var(--color-text-secondary); max-width: 60ch; }
+.cp-eyebrow {
+  font-weight: 700;
+  font-size: var(--type-label-small-size);
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.cp-price {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: var(--type-pricing-small-size);
+  letter-spacing: var(--type-display-tracking);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* ---- Superficies ---- */
+.cp-card {
+  border: var(--bw-small) solid var(--color-border-strong);
+  border-radius: var(--br-16);
+  background: var(--color-bg-canvas);
+  overflow: hidden;
+}
+.cp-card--warm { background: var(--color-bg-surface-warm); border-color: transparent; }
+.cp-card__pad { padding: var(--sp-24); display: grid; gap: var(--sp-20); }
+.cp-card .chilis-accordion { width: 100%; }
+.cp-card .chilis-accordion:last-child .chilis-accordion__divider { display: none; }
+
+/* ---- Sello de éxito ---- */
+.cp-success {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  border-radius: var(--br-100);
+  background: var(--color-text-success);
+  color: var(--color-text-inverse);
+}
+[data-theme='dark'] .cp-success { background: var(--color-icon-accent); color: var(--color-text-inverse); }
+
+/* ---- Tracker ---- */
+.cp-tracker { display: grid; gap: var(--sp-12); }
+.cp-tracker__list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.cp-tracker__step {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: var(--sp-8);
+  text-align: center;
+}
+/* línea que une los pasos */
+.cp-tracker__step:not(:first-child)::before {
+  content: '';
+  position: absolute;
+  top: 11px;
+  right: 50%;
+  width: 100%;
+  height: var(--bw-medium);
+  background: var(--color-border-divider);
+  z-index: 0;
+}
+.cp-tracker__step.is-done::before,
+.cp-tracker__step.is-current::before { background: var(--color-text-success); }
+.cp-tracker__dot {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border: var(--bw-medium) solid var(--color-border-divider);
+  border-radius: var(--br-100);
+  background: var(--color-bg-canvas);
+}
+.cp-tracker__step.is-done .cp-tracker__dot {
+  border-color: var(--color-text-success);
+  background: var(--color-text-success);
+  --color-icon-primary: var(--color-text-inverse);
+}
+.cp-tracker__step.is-current .cp-tracker__dot {
+  border-color: var(--color-text-success);
+  background: var(--color-text-success);
+  box-shadow: 0 0 0 0 var(--color-text-success);
+  animation: cp-pulse 1.8s var(--ease-standard) infinite;
+}
+@keyframes cp-pulse {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-text-success) 45%, transparent); }
+  100% { box-shadow: 0 0 0 12px color-mix(in srgb, var(--color-text-success) 0%, transparent); }
+}
+.cp-tracker__label { font-weight: 600; font-size: var(--type-paragraph-small-size); color: var(--color-text-secondary); }
+.cp-tracker__step.is-current .cp-tracker__label { font-weight: 800; color: var(--color-text-primary); }
+.cp-tracker__msg { font-weight: 600; font-size: var(--type-paragraph-small-size); color: var(--color-text-secondary); text-align: center; }
+
+.cp-tracker--compact .cp-tracker__label { font-size: var(--type-paragraph-xsmall-size); }
+
+.cp-tracker--vertical .cp-tracker__list { grid-template-columns: 1fr; gap: var(--sp-20); }
+.cp-tracker--vertical .cp-tracker__step { grid-template-columns: 24px 1fr; justify-items: start; align-items: center; text-align: left; gap: var(--sp-12); }
+.cp-tracker--vertical .cp-tracker__step:not(:first-child)::before { top: auto; bottom: 50%; right: auto; left: 11px; width: var(--bw-medium); height: calc(100% + var(--sp-20)); }
+
+[data-theme='dark'] .cp-tracker__dot { background: var(--color-bg-canvas); border-color: var(--color-border-default); }
+[data-theme='dark'] .cp-tracker__step:not(:first-child)::before { background: var(--color-border-default); }
+[data-theme='dark'] .cp-tracker__step.is-done .cp-tracker__dot,
+[data-theme='dark'] .cp-tracker__step.is-current .cp-tracker__dot { background: var(--color-icon-accent); border-color: var(--color-icon-accent); }
+[data-theme='dark'] .cp-tracker__step.is-done::before,
+[data-theme='dark'] .cp-tracker__step.is-current::before { background: var(--color-icon-accent); }
+
+/* ---- ETA ---- */
+.cp-eta { display: grid; gap: var(--sp-4); }
+.cp-eta__value {
+  font-family: var(--font-display);
+  font-weight: 900;
+  letter-spacing: var(--type-display-tracking);
+  text-transform: uppercase;
+  line-height: 0.9;
+  font-variant-numeric: tabular-nums;
+}
+.cp-eta__value small { font-size: 0.45em; }
+.cp-eta--lg .cp-eta__value { font-size: var(--type-h1-size); }
+.cp-eta--md .cp-eta__value { font-size: var(--type-h2-size); }
+.cp-eta--sm .cp-eta__value { font-size: var(--type-h4-size); }
+.cp-eta__window { display: inline-flex; align-items: center; gap: var(--sp-4); font-weight: 600; font-size: var(--type-paragraph-small-size); color: var(--color-text-secondary); }
+
+/* ---- Líneas y resumen ---- */
+.cp-lines { display: grid; gap: var(--sp-16); }
+.cp-lines__items { display: grid; gap: var(--sp-12); }
+.cp-lines__item { display: grid; grid-template-columns: 48px minmax(0, 1fr) auto; align-items: center; gap: var(--sp-12); }
+.cp-lines__thumb { display: grid; place-items: center; width: 48px; height: 48px; border-radius: var(--br-8); background: var(--color-bg-surface-warm); }
+.cp-lines__name { display: grid; font-size: var(--type-paragraph-small-size); }
+.cp-lines__name span { color: var(--color-text-secondary); font-size: var(--type-paragraph-xsmall-size); }
+.cp-sum { display: grid; gap: var(--sp-8); padding-top: var(--sp-16); border-top: var(--bw-xsmall) solid var(--color-border-divider); font-size: var(--type-paragraph-small-size); }
+.cp-sum > div { display: flex; justify-content: space-between; gap: var(--sp-16); }
+.cp-sum dd { font-variant-numeric: tabular-nums; font-weight: 600; }
+.cp-sum__saving dd { color: var(--color-text-success); font-weight: 700; }
+.cp-sum__total { padding-top: var(--sp-8); border-top: var(--bw-xsmall) solid var(--color-border-divider); font-weight: 800; font-size: var(--type-paragraph-medium-size); }
+.cp-sum__total dd { font-family: var(--font-display); font-weight: 900; letter-spacing: var(--type-display-tracking); font-size: var(--type-pricing-medium-size); }
+
+/* ---- Datos del pedido ---- */
+.cp-facts { display: grid; gap: var(--sp-16); }
+.cp-facts__row { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: var(--sp-12); align-items: start; }
+.cp-facts dt { font-weight: 700; font-size: var(--type-label-small-size); text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-secondary); }
+.cp-facts dd { display: grid; font-weight: 600; font-size: var(--type-paragraph-small-size); overflow-wrap: anywhere; }
+.cp-facts dd span { font-weight: 500; color: var(--color-text-secondary); }
+
+/* ---- Código del cupón ---- */
+.cp-code {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas: 'label label' 'value copy';
+  align-items: center;
+  gap: var(--sp-4) var(--sp-12);
+  padding: var(--sp-12) var(--sp-12) var(--sp-12) var(--sp-16);
+  border: var(--bw-small) dashed var(--color-border-strong);
+  border-radius: var(--br-8);
+}
+.cp-code__label { grid-area: label; font-weight: 700; font-size: var(--type-label-small-size); letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-secondary); }
+.cp-code__value { grid-area: value; font-family: var(--font-body); font-weight: 800; font-size: var(--type-h5-size); letter-spacing: 0.12em; user-select: all; }
+.cp-code__copy {
+  grid-area: copy;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-4);
+  min-height: var(--size-touch-min);
+  padding: 0 var(--sp-12);
+  border: 0;
+  border-radius: var(--br-100);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: 800;
+  font-size: var(--type-button-size);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+.cp-code__copy:hover { background: var(--color-bg-hover); }
+.cp-code--dark { border-color: var(--color-border-strong); }
+.cp-code--dark .cp-code__copy:hover { background: var(--color-bg-hover); }
+
+.cp-terms { font-weight: 600; font-size: var(--type-paragraph-xsmall-size); color: var(--color-text-secondary); }
+.cp-saved { display: inline-flex; align-items: center; gap: var(--sp-8); font-weight: 700; font-size: var(--type-paragraph-small-size); }
+.cp-saved .chilis-icon { --color-icon-primary: var(--color-text-success); }
+
+/* Moneda pequeña y alineada arriba en montos héroe (evita que la barra de S/ choque con otras líneas) */
+.cp-cur { font-size: 0.42em; vertical-align: top; line-height: 1; margin-right: 0.08em; position: relative; top: 0.12em; }
+
+/* ---- Barra de prototipo (no es parte del diseño) ---- */
+.proto-bar {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 20;
+  background: var(--color-bg-night);
+  color: var(--color-text-on-night);
+}
+.proto-bar__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-12) var(--sp-24);
+  padding-block: var(--sp-12);
+}
+.proto-bar__title { font-weight: 700; font-size: var(--type-paragraph-small-size); min-width: 0; flex: 1 1 220px; }
+.proto-bar__title span { display: block; font-weight: 500; font-size: var(--type-paragraph-xsmall-size); color: var(--color-text-secondary); }
+.proto-bar__chips { display: flex; gap: var(--sp-8); overflow-x: auto; max-width: 100%; }
+.proto-bar__chips .chilis-chip { min-height: 36px; padding: var(--sp-4) var(--sp-16); }
+.proto-bar__sim { display: flex; align-items: center; gap: var(--sp-8); font-size: var(--type-paragraph-xsmall-size); font-weight: 600; }
+
+@media (max-width: 599px) {
+  .cp-eta--lg .cp-eta__value { font-size: var(--type-h2-size); }
+  .cp-card__pad { padding: var(--sp-20); }
+  .proto-bar__sim span { display: none; }
+  .cp-tracker__label { font-size: var(--type-paragraph-xsmall-size); padding-inline: 2px; }
+  .cp-tracker--compact .cp-tracker__label { font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cp-tracker__step.is-current .cp-tracker__dot { animation: none; }
+}

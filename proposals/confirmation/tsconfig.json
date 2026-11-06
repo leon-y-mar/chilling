@@ -1,0 +1,6 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": { "types": ["vite/client"] },
+  "include": ["src", "../../components", "../../icons", "../../utils"],
+  "exclude": ["../../components/**/*.stories.tsx", "../../components/OrderItem", "../../components/CartItem", "../../components/PartySize", "../../components/ActionBar"]
+}

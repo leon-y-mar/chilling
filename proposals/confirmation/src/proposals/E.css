@@ -1,0 +1,67 @@
+.pe { padding-block: var(--sp-40) var(--sp-96); background: var(--color-bg-surface); }
+.pe__stack { display: grid; gap: var(--sp-40); }
+
+.pe-status__row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) minmax(0, 440px);
+  align-items: center;
+  gap: var(--sp-16) var(--sp-32);
+  padding: var(--sp-24) var(--sp-32);
+}
+.pe-status__text { display: grid; gap: var(--sp-8); min-width: 0; }
+.pe-status__text p { font-weight: 500; font-size: var(--type-paragraph-small-size); color: var(--color-text-secondary); }
+.pe-status__detail { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--sp-32); padding-top: var(--sp-4); }
+
+.pe-next { display: grid; gap: var(--sp-24); }
+.pe-next__head { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--sp-24); flex-wrap: wrap; }
+.pe-next__head > div { display: grid; gap: var(--sp-8); }
+.pe-next__head .cp-code { min-width: 260px; background: var(--color-bg-canvas); }
+
+.pe-meter { display: grid; gap: var(--sp-12); padding: var(--sp-24); border-radius: var(--br-16); background: var(--color-bg-surface-warm); }
+.pe-meter__labels { display: flex; justify-content: space-between; align-items: baseline; gap: var(--sp-16); font-weight: 700; font-size: var(--type-paragraph-small-size); }
+.pe-meter__now { font-family: var(--font-display); font-weight: 900; letter-spacing: var(--type-display-tracking); font-size: var(--type-h4-size); font-variant-numeric: tabular-nums; }
+.pe-meter__track { height: 16px; border: var(--bw-small) solid var(--color-border-strong); border-radius: var(--br-100); background: var(--color-bg-canvas); overflow: hidden; }
+.pe-meter__track span { display: block; height: 100%; background: var(--color-bg-accent); transition: width var(--duration-base) var(--ease-standard), background-color var(--duration-base) var(--ease-standard); }
+.pe-meter.is-unlocked .pe-meter__track span { background: var(--color-text-success); }
+.pe-meter__hint { font-weight: 600; }
+
+.pe-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-24); }
+.pe-prod {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: var(--sp-16);
+  padding: var(--sp-20);
+  border: var(--bw-small) solid var(--color-border-divider);
+  border-radius: var(--br-16);
+  background: var(--color-bg-canvas);
+  transition: border-color var(--duration-fast) var(--ease-standard);
+}
+.pe-prod.is-added { border-color: var(--color-border-strong); }
+.pe-prod.is-feature { background: var(--color-bg-surface-warm); }
+.pe-prod__art { display: grid; place-items: center; aspect-ratio: 4 / 3; max-width: 100%; border-radius: var(--br-8); background: var(--color-bg-surface-warm); }
+.pe-prod.is-feature .pe-prod__art { background: var(--color-bg-canvas); }
+.pe-prod__art .chilis-illustration { width: 45%; height: auto; aspect-ratio: 1; }
+.pe-prod__info { display: grid; gap: var(--sp-4); align-content: start; }
+.pe-prod__name { font-weight: 800; }
+.pe-prod__detail { font-weight: 500; font-size: var(--type-paragraph-small-size); color: var(--color-text-secondary); }
+
+.pe-checkout { display: flex; align-items: center; justify-content: flex-end; gap: var(--sp-24); flex-wrap: wrap; }
+.pe-note { font-weight: 500; font-size: var(--type-paragraph-xsmall-size); color: var(--color-text-secondary); }
+
+@media (max-width: 1023px) {
+  .pe-status__row { grid-template-columns: auto minmax(0, 1fr); }
+  .pe-status__track { grid-column: 1 / -1; }
+  .pe-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pe-prod.is-feature { grid-column: 1 / -1; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: auto auto; }
+  .pe-prod.is-feature .pe-prod__art { grid-row: span 2; }
+}
+@media (max-width: 599px) {
+  .pe-status__row { padding: var(--sp-20); }
+  .pe-status__detail { grid-template-columns: minmax(0, 1fr); }
+  .pe-next__head .cp-code { min-width: 0; width: 100%; }
+  .pe-grid { gap: var(--sp-12); }
+  .pe-prod { padding: var(--sp-12); }
+  .pe-prod .chilis-btn { width: 100%; }
+  .pe-checkout { justify-content: stretch; }
+  .pe-checkout .chilis-btn { width: 100%; }
+}
