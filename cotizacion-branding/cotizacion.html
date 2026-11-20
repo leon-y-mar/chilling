@@ -4,224 +4,89 @@
 <meta charset="utf-8">
 <title>Cotización Branding</title>
 <style>
-  :root{
-    --bg:#ffffff; --fg:#09090b; --muted:#71717a; --muted-2:#a1a1aa;
-    --border:#e4e4e7; --subtle:#f4f4f5; --subtle-2:#fafafa; --radius:10px;
-  }
+  :root{ --fg:#0a0a0a; --muted:#8a8a8a; --faint:#bdbdbd; --line:#e8e8e8; }
   @page{ size:A4; margin:0; }
   *{ box-sizing:border-box; margin:0; padding:0; }
-  html,body{ background:var(--bg); color:var(--fg); font-family:"Inter",sans-serif;
-    font-size:9.5pt; line-height:1.5; -webkit-print-color-adjust:exact; print-color-adjust:exact;
-    font-feature-settings:"cv11","ss01"; }
-  .page{ width:210mm; height:297mm; padding:16mm 16mm 14mm; position:relative; overflow:hidden;
-    page-break-after:always; display:flex; flex-direction:column; }
-  .page:last-child{ page-break-after:auto; }
-  .mono{ font-family:"JetBrains Mono",monospace; }
+  html,body{ background:#fff; color:var(--fg); font-family:"Inter",sans-serif; font-size:9pt; line-height:1.55; }
+  .page{ width:210mm; height:297mm; padding:22mm 22mm 20mm; display:flex; flex-direction:column; }
+  .mono{ font-family:"JetBrains Mono",monospace; font-size:7.5pt; letter-spacing:.02em; }
+  .muted{ color:var(--muted); }
 
-  /* header */
-  .top{ display:flex; justify-content:space-between; align-items:center; padding-bottom:14px;
-    border-bottom:1px solid var(--border); }
-  .brand{ display:flex; align-items:center; gap:10px; font-weight:600; font-size:10.5pt; letter-spacing:-.01em; }
-  .mark{ width:26px; height:26px; border-radius:7px; background:var(--fg); display:grid; place-items:center; }
-  .mark i{ width:10px; height:10px; border:2px solid #fff; border-radius:50%; display:block; }
-  .badge{ display:inline-flex; align-items:center; gap:6px; border:1px solid var(--border); border-radius:999px;
-    padding:3px 10px; font-size:8pt; font-weight:500; color:var(--fg); background:var(--bg); }
-  .badge .dot{ width:6px; height:6px; border-radius:50%; background:var(--fg); }
+  .top{ display:flex; justify-content:space-between; }
 
-  h1{ font-family:"Inter Display","Inter",sans-serif; font-size:30pt; line-height:1.05; letter-spacing:-.035em;
-    font-weight:600; margin-top:28px; }
-  h1 span{ color:var(--muted-2); }
-  .lead{ color:var(--muted); font-size:10.5pt; max-width:120mm; margin-top:10px; }
+  .title{ margin-top:34mm; }
+  h1{ font-family:"Inter Display","Inter",sans-serif; font-weight:500; font-size:52pt; line-height:.95; letter-spacing:-.045em; }
+  .sub{ font-family:"Inter Display","Inter"; font-size:52pt; line-height:.95; letter-spacing:-.045em; color:var(--faint); font-weight:300; }
 
-  .meta{ display:grid; grid-template-columns:repeat(4,1fr); margin-top:22px; border:1px solid var(--border);
-    border-radius:var(--radius); overflow:hidden; }
-  .meta div{ padding:10px 12px; border-right:1px solid var(--border); }
-  .meta div:last-child{ border-right:0; }
-  .label{ font-size:7.5pt; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); font-weight:500; }
-  .meta b{ display:block; font-weight:500; margin-top:2px; font-size:9.5pt; }
+  .block{ display:grid; grid-template-columns:42mm 1fr; padding:7mm 0; border-top:1px solid var(--line); }
+  .title{ margin-bottom:24mm; }
+  .label{ color:var(--muted); }
 
-  /* stats */
-  .stats{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-top:14px; }
-  .stat{ border:1px solid var(--border); border-radius:var(--radius); padding:12px; background:var(--subtle-2); }
-  .stat .n{ font-family:"Inter Display","Inter"; font-size:20pt; font-weight:600; letter-spacing:-.03em; line-height:1.1; margin-top:6px; }
-  .stat .s{ color:var(--muted); font-size:8pt; }
+  .scope{ display:grid; grid-template-columns:1fr 1fr; column-gap:8mm; row-gap:1.6mm; list-style:none; }
+  .scope li{ display:flex; gap:3mm; }
+  .scope li .mono{ color:var(--faint); padding-top:1px; }
 
-  h2{ font-size:11pt; font-weight:600; letter-spacing:-.01em; display:flex; align-items:center; gap:8px; }
-  .section{ margin-top:22px; }
-  .section-head{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:10px; }
-  .section-head p{ color:var(--muted); font-size:8.5pt; }
+  .figs{ display:grid; grid-template-columns:.8fr 1.4fr 1fr 1fr; }
+  .fig b{ display:block; font-family:"Inter Display","Inter"; font-weight:400; font-size:20pt; letter-spacing:-.03em; line-height:1.1; }
+  .fig span{ color:var(--muted); font-size:8pt; }
+  .note{ margin-top:5mm; color:var(--muted); }
 
-  /* scope list */
-  .card{ border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; }
-  .card-title{ padding:9px 14px; background:var(--subtle); border-bottom:1px solid var(--border);
-    display:flex; justify-content:space-between; align-items:center; font-weight:600; font-size:9pt; }
-  .row{ display:grid; grid-template-columns:28px 1fr; gap:10px; padding:8.5px 14px; border-bottom:1px solid var(--border); }
-  .row:last-child{ border-bottom:0; }
-  .row .idx{ font-family:"JetBrains Mono"; font-size:8pt; color:var(--muted-2); padding-top:1px; }
-  .row h3{ font-size:9.5pt; font-weight:500; }
-  .row p{ color:var(--muted); font-size:8.5pt; line-height:1.45; }
+  .price{ font-family:"Inter Display","Inter"; font-weight:400; font-size:30pt; letter-spacing:-.04em; line-height:1; }
 
-  .two{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-
-  /* checklist */
-  .check{ list-style:none; }
-  .check li{ display:flex; gap:10px; padding:8px 14px; border-bottom:1px solid var(--border); align-items:flex-start; }
-  .check li:last-child{ border-bottom:0; }
-  .tick{ flex:none; width:15px; height:15px; border-radius:4px; background:var(--fg); display:grid; place-items:center; margin-top:1px; }
-  .tick svg{ width:9px; height:9px; }
-  .check b{ font-weight:500; }
-  .check span{ color:var(--muted); }
-  .check .qty{ margin-left:auto; font-family:"JetBrains Mono"; font-size:8pt; color:var(--fg);
-    border:1px solid var(--border); border-radius:5px; padding:0 6px; white-space:nowrap; background:var(--bg); }
-
-  /* timeline */
-  .tl{ display:flex; height:30px; border-radius:7px; overflow:hidden; border:1px solid var(--border); }
-  .tl div{ display:flex; align-items:center; justify-content:center; font-family:"JetBrains Mono"; font-size:7.5pt;
-    border-right:1px solid var(--bg); }
-  .tl div:last-child{ border-right:0; }
-  .tl-legend{ display:grid; grid-template-columns:repeat(5,1fr); gap:8px; margin-top:8px; }
-  .tl-legend div{ font-size:8pt; }
-  .tl-legend b{ font-weight:500; display:block; }
-  .tl-legend span{ color:var(--muted); }
-  .sw{ display:inline-block; width:8px; height:8px; border-radius:2px; margin-right:5px; vertical-align:0; }
-
-  /* table */
-  table{ width:100%; border-collapse:collapse; }
-  th{ text-align:left; font-size:7.5pt; text-transform:uppercase; letter-spacing:.08em; color:var(--muted);
-    font-weight:500; padding:9px 14px; background:var(--subtle); border-bottom:1px solid var(--border); }
-  td{ padding:10px 14px; border-bottom:1px solid var(--border); vertical-align:top; }
-  td small{ display:block; color:var(--muted); font-size:8pt; }
-  .r{ text-align:right; }
-  tfoot td{ border-bottom:0; background:var(--fg); color:#fff; font-weight:600; }
-  tfoot .total{ font-family:"Inter Display","Inter"; font-size:17pt; letter-spacing:-.02em; }
-
-  .terms{ list-style:none; counter-reset:t; }
-  .terms li{ counter-increment:t; display:grid; grid-template-columns:22px 1fr; padding:6px 0; border-bottom:1px dashed var(--border); color:var(--muted); font-size:8.5pt; }
-  .terms li:last-child{ border-bottom:0; }
-  .terms li::before{ content:counter(t, decimal-leading-zero); font-family:"JetBrains Mono"; font-size:7.5pt; color:var(--muted-2); padding-top:1px; }
-  .terms b{ color:var(--fg); font-weight:500; }
-
-  .sign{ display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:auto; padding-top:18px; }
-  .sign div{ border-top:1px solid var(--fg); padding-top:6px; font-size:8.5pt; }
-  .sign span{ color:var(--muted); display:block; font-size:8pt; }
-
-  .foot{ position:absolute; left:16mm; right:16mm; bottom:8mm; display:flex; justify-content:space-between;
-    font-size:7.5pt; color:var(--muted-2); font-family:"JetBrains Mono"; }
+  .foot{ margin-top:auto; display:flex; justify-content:space-between; align-items:flex-end; color:var(--muted); font-size:7.5pt; }
+  .foot p{ max-width:105mm; }
 </style>
 </head>
 <body>
-
-<!-- ================= PAGE 1 ================= -->
 <section class="page">
-  <div class="top">
-    <div class="brand"><div class="mark"><i></i></div>Tu Estudio</div>
-    <span class="badge"><span class="dot"></span>Cotización N.º 2026-001</span>
+  <div class="top mono muted">
+    <span>Cotización N.º 001</span>
+    <span>20.11.2026</span>
   </div>
 
-  <h1>Servicio de<br>Branding <span>integral</span></h1>
-  <p class="lead">Propuesta para el desarrollo de la identidad de marca, su sistema gráfico y sus aplicaciones impresas y digitales.</p>
-
-  <div class="meta">
-    <div><span class="label">Cliente</span><b>Nombre del cliente</b></div>
-    <div><span class="label">Fecha</span><b>20 nov 2026</b></div>
-    <div><span class="label">Validez</span><b>15 días calendario</b></div>
-    <div><span class="label">Moneda</span><b>Soles (PEN)</b></div>
+  <div class="title">
+    <h1>Branding</h1>
+    <div class="sub">Identidad de marca</div>
   </div>
 
-  <div class="stats">
-    <div class="stat"><span class="label">Duración</span><div class="n">30</div><div class="s">días hábiles</div></div>
-    <div class="stat"><span class="label">Propuestas</span><div class="n">2 + 2</div><div class="s">propuestas + iteraciones</div></div>
-    <div class="stat"><span class="label">Plantillas RRSS</span><div class="n">10</div><div class="s">piezas editables</div></div>
-    <div class="stat"><span class="label">Papelería</span><div class="n">8</div><div class="s">productos máx.</div></div>
-  </div>
-
-  <div class="section">
-    <div class="section-head"><h2>Alcance · Identidad de marca</h2><p>10 componentes</p></div>
-    <div class="card">
-      <div class="row"><span class="idx">01</span><div><h3>Logotipo</h3><p>Diseño del logotipo principal y sus versiones (horizontal, vertical y reducida).</p></div></div>
-      <div class="row"><span class="idx">02</span><div><h3>Generación de isotipo</h3><p>Símbolo independiente de la marca para usos reducidos, avatares y favicon.</p></div></div>
-      <div class="row"><span class="idx">03</span><div><h3>Lineamiento gráfico</h3><p>Sistema visual: retícula de construcción, área de protección y tamaños mínimos.</p></div></div>
-      <div class="row"><span class="idx">04</span><div><h3>Colores institucionales</h3><p>Paleta primaria y secundaria con códigos HEX, RGB, CMYK y Pantone.</p></div></div>
-      <div class="row"><span class="idx">05</span><div><h3>Tipografía institucional</h3><p>Familia primaria y secundaria, jerarquías y usos recomendados.</p></div></div>
-      <div class="row"><span class="idx">06</span><div><h3>Usos correctos e incorrectos</h3><p>Formas correctas e incorrectas de aplicar el logotipo.</p></div></div>
-      <div class="row"><span class="idx">07</span><div><h3>Uso de la marca sobre color</h3><p>Versiones positiva, negativa y monocromática sobre fondos y fotografías.</p></div></div>
-      <div class="row"><span class="idx">08</span><div><h3>Papelería institucional</h3><p>Folder, hojas membretadas, sobres, tarjetas y otras piezas (hasta 8 productos).</p></div></div>
-      <div class="row"><span class="idx">09</span><div><h3>Aplicaciones digitales</h3><p>Diseño de firma de correo y plantillas para redes sociales.</p></div></div>
-      <div class="row"><span class="idx">10</span><div><h3>Manual de marca digital</h3><p>Documento PDF que reúne todas las normas de uso de la identidad.</p></div></div>
-    </div>
-  </div>
-
-  <div class="foot"><span>Cotización · Branding</span><span>01 / 02</span></div>
-</section>
-
-<!-- ================= PAGE 2 ================= -->
-<section class="page">
-  <div class="top">
-    <div class="brand"><div class="mark"><i></i></div>Tu Estudio</div>
-    <span class="badge"><span class="dot"></span>Cotización N.º 2026-001</span>
-  </div>
-
-  <div class="section" style="margin-top:20px">
-    <div class="section-head"><h2>Entregables incluidos</h2><p>Lo que recibes al finalizar</p></div>
-    <div class="card">
-      <ul class="check">
-        <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2"><path d="M2.5 6.5l2.3 2.3 4.7-5"/></svg></span><div><b>Propuestas de marca</b><br><span>2 rutas creativas y 2 rondas de ajustes sobre la elegida</span></div><span class="qty">2 + 2</span></li>
-        <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2"><path d="M2.5 6.5l2.3 2.3 4.7-5"/></svg></span><div><b>Plantillas para redes sociales</b><br><span>Diseños editables para publicaciones e historias</span></div><span class="qty">10</span></li>
-        <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2"><path d="M2.5 6.5l2.3 2.3 4.7-5"/></svg></span><div><b>Papelería institucional</b><br><span>Folder, hojas membretadas, sobres y más</span></div><span class="qty">hasta 8</span></li>
-        <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2"><path d="M2.5 6.5l2.3 2.3 4.7-5"/></svg></span><div><b>Manual de marca digital</b><br><span>Guía completa en PDF</span></div><span class="qty">1</span></li>
-        <li><span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2"><path d="M2.5 6.5l2.3 2.3 4.7-5"/></svg></span><div><b>Aplicación digital de marca</b><br><span>Firma de correo, avatares y piezas digitales</span></div><span class="qty">incluido</span></li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-head"><h2>Cronograma referencial</h2><p>30 días hábiles</p></div>
-    <div class="tl">
-      <div style="flex:3;background:#09090b;color:#fff">3d</div>
-      <div style="flex:7;background:#3f3f46;color:#fff">7d</div>
-      <div style="flex:6;background:#71717a;color:#fff">6d</div>
-      <div style="flex:8;background:#d4d4d8;color:#09090b">8d</div>
-      <div style="flex:6;background:#f4f4f5;color:#09090b">6d</div>
-    </div>
-    <div class="tl-legend">
-      <div><b><span class="sw" style="background:#09090b"></span>Descubrimiento</b><span>Brief e investigación</span></div>
-      <div><b><span class="sw" style="background:#3f3f46"></span>Propuestas</b><span>2 rutas creativas</span></div>
-      <div><b><span class="sw" style="background:#71717a"></span>Iteraciones</b><span>2 rondas de ajustes</span></div>
-      <div><b><span class="sw" style="background:#d4d4d8"></span>Sistema y manual</b><span>Lineamientos y normas</span></div>
-      <div><b><span class="sw" style="background:#f4f4f5;border:1px solid #e4e4e7"></span>Aplicaciones</b><span>Papelería y digital</span></div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-head"><h2>Inversión</h2></div>
-    <div class="card">
-      <table>
-        <thead><tr><th>Concepto</th><th class="r">Monto</th></tr></thead>
-        <tbody>
-          <tr><td>Servicio de Branding integral<small>Identidad de marca, lineamientos, papelería, aplicaciones digitales y manual de marca</small></td><td class="r mono">S/ 3,900.00</td></tr>
-        </tbody>
-        <tfoot><tr><td>Total</td><td class="r total">S/ 3,900.00</td></tr></tfoot>
-      </table>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-head"><h2>Condiciones</h2></div>
-    <ul class="terms">
-      <li><span><b>Forma de pago:</b> 50% al iniciar el proyecto y 50% a la entrega final.</span></li>
-      <li><span><b>Plazo:</b> los 30 días hábiles se cuentan desde la recepción del adelanto y el brief completo.</span></li>
-      <li><span><b>Iteraciones:</b> rondas adicionales a las 2 incluidas se cotizan por separado.</span></li>
-      <li><span><b>Entrega:</b> archivos editables y finales (AI, PDF, PNG, SVG) al completar el pago.</span></li>
-      <li><span><b>No incluye:</b> impresión, registro de marca ante INDECOPI ni producción fotográfica.</span></li>
+  <div class="block">
+    <span class="label">Alcance</span>
+    <ul class="scope">
+      <li><span class="mono">01</span>Logotipo</li>
+      <li><span class="mono">06</span>Usos correctos e incorrectos</li>
+      <li><span class="mono">02</span>Isotipo</li>
+      <li><span class="mono">07</span>Uso de la marca sobre color</li>
+      <li><span class="mono">03</span>Lineamiento gráfico</li>
+      <li><span class="mono">08</span>Papelería institucional</li>
+      <li><span class="mono">04</span>Colores institucionales</li>
+      <li><span class="mono">09</span>Firma digital y plantillas RRSS</li>
+      <li><span class="mono">05</span>Tipografía primaria y secundaria</li>
+      <li><span class="mono">10</span>Manual de marca digital</li>
     </ul>
   </div>
 
-  <div class="sign">
-    <div>Tu Estudio<span>Firma y fecha</span></div>
-    <div>Nombre del cliente<span>Aceptación · Firma y fecha</span></div>
+  <div class="block">
+    <span class="label">Entregables</span>
+    <div>
+      <div class="figs">
+        <div class="fig"><b>30</b><span>días hábiles</span></div>
+        <div class="fig"><b>2 + 2</b><span>propuestas + iteraciones</span></div>
+        <div class="fig"><b>10</b><span>plantillas RRSS</span></div>
+        <div class="fig"><b>8</b><span>piezas de papelería</span></div>
+      </div>
+      <p class="note">Incluye manual de marca y aplicación digital de marca.</p>
+    </div>
   </div>
 
-  <div class="foot"><span>Cotización · Branding</span><span>02 / 02</span></div>
+  <div class="block">
+    <span class="label">Inversión</span>
+    <div class="price">S/ 3,900</div>
+  </div>
+
+  <div class="foot">
+    <p>Pago 50% al inicio y 50% a la entrega. Validez de 15 días. No incluye impresión ni registro de marca.</p>
+    <span class="mono">Para — Cliente</span>
+  </div>
 </section>
 </body>
 </html>
